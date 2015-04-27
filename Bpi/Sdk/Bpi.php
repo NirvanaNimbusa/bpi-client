@@ -2,7 +2,8 @@
 require_once __DIR__ . '/../../vendor/autoload.php';
 
 /**
- * TODO please add a general description about the purpose of this class.
+ * Class Bpi
+ * Bpi client.
  */
 class Bpi
 {
@@ -83,7 +84,7 @@ class Bpi
     /**
      * Push new node to BPI
      *
-     * @param array $data TODO please add some documentation of this property.
+     * @param array $data of node which will be pushed to service.
      * @throws \InvalidArgumentException
      * @return \Bpi\Sdk\Item\Node
      */

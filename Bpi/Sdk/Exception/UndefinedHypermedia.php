@@ -2,6 +2,9 @@
 namespace Bpi\Sdk\Exception;
 
 /**
- * TODO please add a general description about the purpose of this class.
+ * Class UndefinedHypermedia
+ * Exception class for hypermedia errors.
+ *
+ * @package Bpi\Sdk\Exception
  */
 class UndefinedHypermedia extends SDKException {}

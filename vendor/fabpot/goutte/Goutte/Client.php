@@ -46,7 +46,7 @@ class Client extends BaseClient
     public function getClient()
     {
         if (!$this->client) {
-            $this->client = new GuzzleClient('', array('redirect.disable' => true));
+            $this->client = new GuzzleClient('', array(GuzzleClient::DISABLE_REDIRECTS => true));
         }
 
         return $this->client;
@@ -57,6 +57,11 @@ class Client extends BaseClient
         $this->headers[$name] = $value;
 
         return $this;
+    }
+
+    public function removeHeader($name)
+    {
+        unset($this->headers[$name]);
     }
 
     public function setAuth($user, $password = '', $type = CURLAUTH_BASIC)
@@ -70,11 +75,18 @@ class Client extends BaseClient
         return $this;
     }
 
+    public function resetAuth()
+    {
+        $this->auth = null;
+
+        return $this;
+    }
+
     protected function doRequest($request)
     {
         $headers = array();
         foreach ($request->getServer() as $key => $val) {
-            $key = ucfirst(strtolower(str_replace(array('_', 'HTTP-'), array('-', ''), $key)));
+            $key = implode('-', array_map('ucfirst', explode('-', strtolower(str_replace(array('_', 'HTTP-'), array('-', ''), $key)))));
             if (!isset($headers[$key])) {
                 $headers[$key] = $val;
             }
@@ -112,7 +124,7 @@ class Client extends BaseClient
             $guzzleRequest->addCookie($name, $value);
         }
 
-        if ('POST' == $request->getMethod()) {
+        if ('POST' == $request->getMethod() || 'PUT' == $request->getMethod()) {
             $this->addPostFiles($guzzleRequest, $request->getFiles());
         }
 
@@ -153,7 +165,7 @@ class Client extends BaseClient
             if (is_array($info)) {
                 if (isset($info['tmp_name'])) {
                     if ('' !== $info['tmp_name']) {
-                        $request->addPostFile($name, $info['tmp_name']);
+                        $request->addPostFile($name, $info['tmp_name'], null, isset($info['name']) ? $info['name'] : null);
                     } else {
                         continue;
                     }
@@ -168,6 +180,8 @@ class Client extends BaseClient
 
     protected function createResponse(GuzzleResponse $response)
     {
-        return new Response($response->getBody(true), $response->getStatusCode(), $response->getHeaders()->getAll());
+        $headers = $response->getHeaders()->toArray();
+
+        return new Response($response->getBody(true), $response->getStatusCode(), $headers);
     }
 }

@@ -4,7 +4,10 @@ namespace Bpi\Sdk;
 use Symfony\Component\DomCrawler\Crawler;
 
 /**
- * TODO please add a general description about the purpose of this class.
+ * Class Link
+ * Prepare URI for request.
+ *
+ * @package Bpi\Sdk
  */
 class Link
 {

@@ -2,6 +2,9 @@
 namespace Bpi\Sdk\Exception;
 
 /**
- * TODO please add a general description about the purpose of this class.
+ * Class SDKException
+ * Main exception class.
+ *
+ * @package Bpi\Sdk\Exception
  */
 class SDKException extends \Exception {}

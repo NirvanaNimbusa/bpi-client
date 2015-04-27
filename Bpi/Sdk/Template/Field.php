@@ -2,7 +2,9 @@
 namespace Bpi\Sdk\Template;
 
 /**
- * TODO please add a general description about the purpose of this class.
+ * Class Field
+ *
+ * @package Bpi\Sdk\Template
  */
 class Field
 {

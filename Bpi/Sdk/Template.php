@@ -4,9 +4,9 @@ namespace Bpi\Sdk;
 use Symfony\Component\DomCrawler\Crawler;
 
 /**
- * TODO please add a general description about the purpose of this class.
+ * Class Template
  *
- * TODO Why is this not in the Template namespace?
+ * @package Bpi\Sdk
  */
 class Template
 {

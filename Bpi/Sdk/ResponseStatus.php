@@ -2,7 +2,10 @@
 namespace Bpi\Sdk;
 
 /**
- * TODO please add a general description about the purpose of this class.
+ * Class ResponseStatus
+ * Check status of response.
+ *
+ * @package Bpi\Sdk
  */
 class ResponseStatus
 {

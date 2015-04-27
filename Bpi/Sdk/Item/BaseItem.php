@@ -4,7 +4,9 @@ namespace Bpi\Sdk\Item;
 use Bpi\Sdk\Document;
 
 /**
- * TODO please add a documentation for this class.
+ * Class BaseItem
+ *
+ * @package Bpi\Sdk\Item
  */
 class BaseItem
 {

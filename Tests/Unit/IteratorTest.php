@@ -65,7 +65,7 @@ class IteratorTest extends \PHPUnit_Framework_TestCase
 
         try
         {
-            $doc->reduceItemsByAttr(mt_rand(), 'node');
+            $doc->reduceItemsByAttr('node', mt_rand());
             $this->fail('Exception expected trying reduce items by non existing attribute');
         } catch (Exception\EmptyList $e) {
             $this->assertTrue(true);

@@ -2,6 +2,9 @@
 namespace Bpi\Sdk\Exception\HTTP;
 
 /**
- * TODO please add a general description about the purpose of this class.
+ * Class ClientError
+ * Exception class for client errors.
+ *
+ * @package Bpi\Sdk\Exception\HTTP
  */
 class ClientError extends Error {}
