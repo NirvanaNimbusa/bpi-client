@@ -22,6 +22,7 @@
     </hypermedia>
     <property name="title">COLLECTION_TITLE</property>
     <property name="teaser">COLLECTION_TEASER</property>
+    <property name="syndicated">4</property>
   </item>
   <item type="entity">
     <hypermedia>
@@ -29,5 +30,6 @@
     </hypermedia>
     <property name="title">COLLECTION_TITLE_BRAVO</property>
     <property name="teaser">COLLECTION_TEASER_BRAVO</property>
+    <property name="syndicated">4</property>
   </item>
 </bpi>

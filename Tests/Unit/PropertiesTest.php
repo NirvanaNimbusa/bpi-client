@@ -32,10 +32,12 @@ class PropertiesTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals('title', $properties[0]['name']);
         $this->assertEquals('TITLE', $properties[0]['@value']);
-        $this->assertEquals('teaser', $properties[1]['name']);
-        $this->assertEquals('TEASER', $properties[1]['@value']);
+        $this->assertEquals('syndicated', $properties[1]['name']);
+        $this->assertEquals('1', $properties[1]['@value']);
+        $this->assertEquals('teaser', $properties[2]['name']);
+        $this->assertEquals('TEASER', $properties[2]['@value']);
     }
-    
+
     public function testGetPropertiesFromCollection()
     {
         $doc = $this->createMockDocument('Collection');
@@ -65,6 +67,8 @@ class PropertiesTest extends \PHPUnit_Framework_TestCase
                   $this->assertEquals('COLLECTION_TITLE', $properties[0]['@value']);
                   $this->assertEquals('teaser', $properties[1]['name']);
                   $this->assertEquals('COLLECTION_TEASER', $properties[1]['@value']);
+                  $this->assertEquals('syndicated', $properties[2]['name']);
+                  $this->assertEquals('4', $properties[2]['@value']);
 
                   break;
                 case 2: break;
@@ -91,11 +95,13 @@ class PropertiesTest extends \PHPUnit_Framework_TestCase
         }
 
         $this->assertEquals($doc->count(), count($items));
-        $this->assertEquals(2, count($items[0]));
-        $this->assertEquals(2, count($items[1]));
+        $this->assertEquals(3, count($items[0]));
+        $this->assertEquals(3, count($items[1]));
         $this->assertEquals('COLLECTION_TITLE', $items[0][0]['@value']);
         $this->assertEquals('COLLECTION_TEASER', $items[0][1]['@value']);
+        $this->assertEquals('4', $items[0][2]['@value']);
         $this->assertEquals('COLLECTION_TITLE_BRAVO', $items[1][0]['@value']);
         $this->assertEquals('COLLECTION_TEASER_BRAVO', $items[1][1]['@value']);
+        $this->assertEquals('4', $items[1][2]['@value']);
     }
 }

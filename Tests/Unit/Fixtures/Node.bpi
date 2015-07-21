@@ -25,6 +25,7 @@
       </template>
     </hypermedia>
     <property name="title">TITLE</property>
+    <property name="syndicated">1</property>
     <property name="teaser">TEASER</property>
   </item>
 </bpi>
