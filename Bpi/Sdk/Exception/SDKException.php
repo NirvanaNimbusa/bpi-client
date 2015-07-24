@@ -1,10 +1,10 @@
 <?php
+
 namespace Bpi\Sdk\Exception;
 
 /**
- * Class SDKException
- * Main exception class.
- *
- * @package Bpi\Sdk\Exception
+ * Class SDKException main exception class.
  */
-class SDKException extends \Exception {}
+class SDKException extends \Exception
+{
+}

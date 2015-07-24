@@ -1,12 +1,11 @@
 <?php
+
 namespace Bpi\Sdk\Item;
 
 use Bpi\Sdk\Document;
 
 /**
- * Class BaseItem
- *
- * @package Bpi\Sdk\Item
+ * Class BaseItem.
  */
 class BaseItem
 {
@@ -18,24 +17,24 @@ class BaseItem
     }
 
     /**
-     *
      * @return array of node properties
      */
     public function getProperties()
     {
         $properties = array();
-        $this->document->walkProperties(function($e) use(&$properties) {
-            if (isset($properties[$e['name']])) {
-                if (is_array($properties[$e['name']])) {
-                    $properties[$e['name']][] = $e['@value'];
+        $this->document->walkProperties(
+            function ($e) use (&$properties) {
+                if (isset($properties[$e['name']])) {
+                    if (is_array($properties[$e['name']])) {
+                        $properties[$e['name']][] = $e['@value'];
+                    } else {
+                        $properties[$e['name']] = array($properties[$e['name']], $e['@value']);
+                    }
                 } else {
-                    $properties[$e['name']] = array($properties[$e['name']], $e['@value']);
+                    $properties[$e['name']] = $e['@value'];
                 }
-            } else {
-                $properties[$e['name']] = $e['@value'];
             }
-        });
-
+        );
 
         return $properties;
     }

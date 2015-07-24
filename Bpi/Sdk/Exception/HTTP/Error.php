@@ -1,12 +1,12 @@
 <?php
+
 namespace Bpi\Sdk\Exception\HTTP;
 
 use Bpi\Sdk\Exception\SDKException;
 
 /**
- * Class Error
- * Error exception class.
- *
- * @package Bpi\Sdk\Exception\HTTP
+ * Class Error exception class for errors got from HTTP request.
  */
-class Error extends SDKException {}
+class Error extends SDKException
+{
+}

@@ -1,10 +1,10 @@
 <?php
+
 namespace Bpi\Sdk\Exception;
 
 /**
- * Class UndefinedHypermedia
- * Exception class for hypermedia errors.
- *
- * @package Bpi\Sdk\Exception
+ * Class UndefinedHypermedia exception class for hypermedia errors.
  */
-class UndefinedHypermedia extends SDKException {}
+class UndefinedHypermedia extends SDKException
+{
+}

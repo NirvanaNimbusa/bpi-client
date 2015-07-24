@@ -1,15 +1,13 @@
 <?php
+
 namespace Bpi\Sdk\Template;
 
 /**
- * Class Field
- *
- * @package Bpi\Sdk\Template
+ * Class Field.
  */
 class Field
 {
     /**
-     *
      * @var \DOMNode
      */
     protected $node;
@@ -22,7 +20,8 @@ class Field
     protected $value;
 
     /**
-     * 
+     * Initiate object.
+     *
      * @param \DOMNode $node
      */
     public function __construct(\DOMNode $node)

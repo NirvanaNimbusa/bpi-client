@@ -1,23 +1,25 @@
 <?php
+
 namespace Bpi\Sdk;
 
 use Symfony\Component\DomCrawler\Crawler;
+use Bpi\Sdk\Exception as Exception;
 
 /**
- * Class Link
- * Prepare URI for request.
- *
- * @package Bpi\Sdk
+ * Class Link contain methods which prepare URI for different type of requests.
  */
 class Link
 {
     /**
+     * Document crawler.
      *
      * @var \Symfony\Component\DomCrawler\Crawler
      */
     protected $crawler;
 
     /**
+     * Initiate object.
+     *
      * @throws Exception\UndefinedHypermedia
      *
      * @param \Symfony\Component\DomCrawler\Crawler $crawler
@@ -27,13 +29,13 @@ class Link
         $this->crawler = $crawler;
         $this->testConsistency();
     }
-    
+
     /**
-     * Try crawler for consistency of data
-     * 
-     * @throws Exception\InvalidHypermedia
+     * Try crawler for consistency of data.
      *
-     * @returns bool
+     * @throws Exception\UndefinedHypermedia
+     *
+     * @return bool
      */
     protected function testConsistency()
     {
@@ -41,16 +43,15 @@ class Link
             $this->crawler->attr('href');
             $this->crawler->attr('rel');
         } catch (\InvalidArgumentException $e) {
-          throw  $e;
-          throw new Exception\UndefinedHypermedia();
-            return false;
+            throw  $e;
         }
 
         return true;
     }
 
     /**
-     * 
+     * Call request method.
+     *
      * @param \Bpi\Sdk\Document $document
      */
     public function follow(Document $document)
@@ -59,7 +60,7 @@ class Link
     }
 
     /**
-     * Perform HTTP GET for given URI
+     * Perform HTTP GET for given URI.
      *
      * @param \Bpi\Sdk\Document $document
      */
@@ -69,7 +70,7 @@ class Link
     }
 
     /**
-     * Perform HTTP POST for given URI
+     * Perform HTTP POST for given URI.
      *
      * @param \Bpi\Sdk\Document $document
      */
@@ -79,7 +80,7 @@ class Link
     }
 
     /**
-     * Perform HTTP DELETE for given URI
+     * Perform HTTP DELETE for given URI.
      *
      * @param \Bpi\Sdk\Document $document
      */
@@ -89,7 +90,7 @@ class Link
     }
 
     /**
-     * Perform HTTP PUT for given URI
+     * Perform HTTP PUT for given URI.
      *
      * @param \Bpi\Sdk\Document $document
      */
@@ -99,19 +100,19 @@ class Link
     }
 
     /**
-     * 
+     * Convert properties to array.
+     *
      * @return array properties
      */
     public function toArray()
     {
         $properties = array();
-        foreach($this->crawler as $node)
-        {
-            foreach ($node->attributes as $attr_name => $attr)
-            {
+        foreach ($this->crawler as $node) {
+            foreach ($node->attributes as $attr_name => $attr) {
                 $properties[$attr_name] = $attr->value;
             }
         }
+
         return $properties;
     }
 }
