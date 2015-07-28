@@ -1,7 +1,7 @@
 <?php
 namespace Bpi\Sdk;
 
-use Bpi\Sdk\Item;
+use Bpi\Sdk\Item\Node;
 
 /**
  * Class NodeList interact with list of nodes.

@@ -26,6 +26,12 @@ class Document implements \Iterator, \Countable
     protected $crawler;
 
     /**
+     * Array of available facets relatively current request
+     * @var array
+     */
+    protected $facets;
+
+    /**
      * @param \Goutte\Client         $client
      * @param \Bpi\Sdk\Authorization $authorization
      */
@@ -170,6 +176,38 @@ class Document implements \Iterator, \Countable
         } catch (\InvalidArgumentException $e) {
             throw new Exception\UndefinedHypermedia(sprintf('There is no query [%s]', $rel));
         }
+    }
+
+    /**
+     * Set facets based on current request
+     * @throws \Exception
+     */
+    public function setFacets()
+    {
+        try {
+            $query = $this->crawler
+                  ->filter("item[type='facet']")
+                  ->each(
+                        function ($e) {
+                            return simplexml_import_dom($e->getNode(0));
+                        }
+                  );
+
+            $facets = new Facets();
+            $facets->buildFacets($query);
+            $this->facets = $facets;
+        } catch (\InvalidArgumentException $e) {
+            throw new \Exception('There is no facets');
+        }
+    }
+
+    /**
+     * Get facets for current request
+     * @return array
+     */
+    public function getFacets()
+    {
+        return $this->facets;
     }
 
     /**

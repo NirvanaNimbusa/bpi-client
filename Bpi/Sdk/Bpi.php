@@ -72,7 +72,7 @@ class Bpi
         $nodes->firstItem('type', 'collection')
             ->query('refinement')
             ->send($nodes, $queries);
-
+        $nodes->setFacets();
         $this->current_document = $nodes;
 
         return new \Bpi\Sdk\NodeList($nodes);
