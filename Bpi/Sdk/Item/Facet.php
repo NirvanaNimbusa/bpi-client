@@ -57,15 +57,16 @@ class Facet {
     }
 
     /**
-     * Set facet terms
+     * Add facet term
      *
      * @param $termName string
+     * @param $termTitle string
      * @param $termAmount string
      * @return $this
      */
-    public function setFacetTerms($termName, $termAmount)
+    public function addFacetTerm($termName, $termTitle, $termAmount)
     {
-        $this->facetTerms[$termName] = $termAmount;
+        $this->facetTerms[$termName] = new FacetTerm($termName, $termTitle, $termAmount);
         return $this;
     }
 
