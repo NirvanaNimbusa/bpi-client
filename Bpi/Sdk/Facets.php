@@ -50,6 +50,7 @@ class Facets {
     public function buildFacets(array $rawFacets)
     {
         if (empty($rawFacets)) {
+            $this->facets = null;
             return;
         }
 
