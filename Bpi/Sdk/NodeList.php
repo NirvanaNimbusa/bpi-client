@@ -105,14 +105,4 @@ class NodeList implements \Iterator, \Countable
     {
         return $this->document->count();
     }
-
-    /**
-     * Get facets.
-     *
-     * @return Facets
-     */
-    public function getFacets()
-    {
-        return $this->document->getFacets();
-    }
 }
