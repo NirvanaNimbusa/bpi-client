@@ -50,7 +50,8 @@ class Facets {
     public function buildFacets(array $rawFacets)
     {
         if (empty($rawFacets)) {
-            throw new \Exception('Raw facets empty.');
+            $this->facets = null;
+            return;
         }
 
         foreach ($rawFacets as $facetsData) {
