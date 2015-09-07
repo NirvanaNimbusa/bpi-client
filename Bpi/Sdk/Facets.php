@@ -59,9 +59,8 @@ class Facets {
             $facet->setFacetName($facetsData['name']->__toString());
 
             foreach ($facetsData->properties->children() as $facetData) {
-                $facet->setFacetTerms($facetData['name']->__toString(), $facetData->__toString());
+                $facet->addFacetTerm($facetData['name']->__toString(), $facetData['title']->__toString(), $facetData->__toString());
             }
-//            $facet->setFacet();
             $this->addFacets($facet);
         }
     }
